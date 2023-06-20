@@ -10,5 +10,8 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/janitor"
 module = "janitor"
 requires = [
+	"docker",
+	"typer",
+	"typer-cli",
 ]
 requires-python=">=3.9"
