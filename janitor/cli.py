@@ -1,8 +1,7 @@
 import docker
 import typer
 
-janitor = typer.Typer(
-    help="Tools to clean k9 data for the eradication Guadalupe Island project")
+janitor = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
 
 
 @janitor.command()
@@ -13,7 +12,7 @@ def transform_xlsx(command: str):
     client = docker.from_env()
     image = client.images.pull("islasgeci/clean_k9_data")
     client.containers.run(
-        "islasgeci/clean_k9_data",
+        image,
         volumes={"$PWD": {"bind": "/workdir", "mode": "rw"}},
         command=f"clean_k9_data {command}",
         remove=True,
