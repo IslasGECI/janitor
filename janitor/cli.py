@@ -13,6 +13,7 @@ def transform_xlsx(options: str):
     command = f"docker run --entrypoint clean_k9_data --volume $PWD:/workdir islasgeci/clean_k9_data {options}"
     os.system(command)
 
+
 @janitor.command()
 def version():
     version = jn.__version__
