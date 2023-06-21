@@ -1,5 +1,6 @@
 import os
 import typer
+import janitor as jn
 
 janitor = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
 
@@ -14,4 +15,5 @@ def transform_xlsx(options: str):
 
 @janitor.command()
 def version():
-    print("0.1.0")
+    version = jn.__version__
+    print(version)
