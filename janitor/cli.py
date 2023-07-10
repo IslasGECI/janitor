@@ -14,6 +14,12 @@ def transform_xlsx(options: str):
     os.system(command)
 
 
+@janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
+def transform_cat_data():
+    command = f"echo 'Hola mundo'"
+    os.system(command)
+
+
 @janitor.command()
 def version():
     version = jn.__version__
