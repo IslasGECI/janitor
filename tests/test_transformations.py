@@ -12,7 +12,7 @@ def test_app():
     )
     assert result.exit_code == 0
     expected_file_path = "tests/data/IG_POSICION_TRAMPAS_02JUL2023_clean.csv"
-    if os.path.exist(expected_file_path):
+    if os.path.exists(expected_file_path):
         os.remove(expected_file_path)
 
     folder_with_data_path = "tests/data"
@@ -22,4 +22,4 @@ def test_app():
         ["transform-cat-data"],
     )
     os.chdir("/workdir")
-    assert os.path.exist(expected_file_path)
+    assert os.path.exists(expected_file_path)
