@@ -1,5 +1,4 @@
 from janitor import janitor
-import os
 from typer.testing import CliRunner
 
 runner = CliRunner()
