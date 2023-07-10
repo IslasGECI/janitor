@@ -16,7 +16,7 @@ def transform_xlsx(options: str):
 
 @janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
 def transform_cat_data():
-    command = f"echo 'Hola mundo'"
+    command = "docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/verify_data.sh /data"
     os.system(command)
 
 
