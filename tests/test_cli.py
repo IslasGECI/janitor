@@ -1,4 +1,4 @@
-from janitor import janitor
+from geci_janitor import janitor
 from typer.testing import CliRunner
 
 runner = CliRunner()
