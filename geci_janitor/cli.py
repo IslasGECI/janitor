@@ -22,7 +22,7 @@ def transform_cat_data():
 
 @janitor.command(help="Generate tidy and weekly effort tables for socorro monthly cat data")
 def clean_socorro_week_data(week: int, data_file: str):
-    command = f"docker run -v $PWD/results:/workdir/results -v $PWD:/workdir/data islasgeci/datatools python src/get_weekly_summary_socorro_from_excell.py {week} data/{data_file}"
+    command = f"docker run -v $PWD/results:/workdir/results -v $PWD:/workdir/data islasgeci/datatools bash -c 'python src/get_weekly_summary_socorro_from_excell.py {week} data/{data_file} && cambia_formato_fecha results/week_{week}.csv > results/week_{week}_iso.csv'"
     os.system(command)
     command = f"docker run -v $PWD/results:/workdir/results -v $PWD:/workdir/data islasgeci/diferencias_morfometria_posicion_trampas src/make_table_tidy.R --data results/socorro_cleaned_format.csv --salida results/tidy_{week}.csv"
     os.system(command)
