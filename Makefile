@@ -14,7 +14,7 @@ all: check coverage mutants
 		tests
 
 module = geci_janitor
-codecov_token = 6c56bccb-1758-4ed9-8161-97c845591c26
+codecov_token = ce5f6c28-9088-46fc-aae4-c23a93366a40
 
 define lint
 	pylint \
