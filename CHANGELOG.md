@@ -7,16 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.1] - 2023-07-31
+## [0.4.0] - 2023-08-02
 
 ### Added
+
+- Add `weekly-effort-summary` command
+
+### Fixed
+
+### Changed
+
+- New entrypoint. Now we run `geci-janitor` instead of `typer geci_janitor`
+
+### Removed
+
+## [0.3.1] - 2023-07-31
 
 ### Fixed
 
 - Update token codecov
 
-### Changed
 
-### Removed
-
+[0.4.0]: https://github.com/IslasGECI/janitor/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/IslasGECI/janitor/compare/v0.3.0...v0.3.1
