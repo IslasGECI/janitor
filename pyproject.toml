@@ -10,7 +10,10 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/janitor"
 module = "geci_janitor"
 requires = [
-	"typer",
+	"typer[all]",
 	"typer-cli",
 ]
 requires-python=">=3.9"
+
+[tool.flit.scripts]
+geci-janitor = "geci_janitor.cli:janitor"
