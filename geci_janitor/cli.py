@@ -19,6 +19,7 @@ def transform_cat_data():
     command = "docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/verify_data.sh /data"
     os.system(command)
 
+
 @janitor.command()
 def weekly_effort_summary(file: str):
     """
@@ -26,6 +27,7 @@ def weekly_effort_summary(file: str):
     """
     command = f"docker run --rm --volume $PWD:/workdir/datos islasgeci/datatools:latest ./src/get_weekly_summary.sh datos/{file}"
     os.system(command)
+
 
 @janitor.command(help="Generate tidy and weekly effort tables for socorro monthly cat data")
 def clean_socorro_week_data(week: int, data_file: str):
