@@ -5,3 +5,9 @@
 ## Overview
 
 CLI with tools to process cat data.
+
+## 🏗️ Installation
+
+```shell
+pip install geci-janitor
+```
