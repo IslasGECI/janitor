@@ -10,8 +10,7 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/janitor"
 module = "geci_janitor"
 requires = [
-	"typer[all]",
-	"typer-cli",
+	"typer[all]"
 ]
 requires-python=">=3.9"
 
