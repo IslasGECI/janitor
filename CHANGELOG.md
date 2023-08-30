@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Fixed
+
+### Changed
+
+### Removed
+
+## [0.5.0] - 2023-08-30
+
+### Added
+
+- Add `validate` command
+
+### Removed
+
+- Remove `typer-cli` dependency
+
 ## [0.4.0] - 2023-08-02
 
 ### Added
@@ -28,5 +46,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update token codecov
 
 
+[0.5.0]: https://github.com/IslasGECI/janitor/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/IslasGECI/janitor/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/IslasGECI/janitor/compare/v0.3.0...v0.3.1
