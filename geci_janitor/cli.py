@@ -43,7 +43,9 @@ def validate(directory: Annotated[str, typer.Argument()] = "."):
     """
     Run tabular data package validation \n
     """
-    command = f"docker run --rm --volume $PWD:/workdir islasgeci/misctools geci-validate {directory}"
+    command = (
+        f"docker run --rm --volume $PWD:/workdir islasgeci/misctools geci-validate {directory}"
+    )
     os.system(command)
 
 
