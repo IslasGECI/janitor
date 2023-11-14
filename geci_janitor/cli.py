@@ -54,6 +54,7 @@ def version():
     version = jn.__version__
     print(version)
 
+
 @janitor.command()
 def update_images():
     """
