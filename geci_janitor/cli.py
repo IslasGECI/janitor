@@ -53,3 +53,18 @@ def validate(directory: Annotated[str, typer.Argument()] = "."):
 def version():
     version = jn.__version__
     print(version)
+
+@janitor.command()
+def update_images():
+    """
+    Update images for command: \n
+    - `transform_cat_data`
+    """
+    update_diferencias()
+
+
+def update_diferencias():
+    command = (
+        "docker rmi --force islasgeci/diferencias_morfometria_posicion_trampas && docker pull islasgeci/diferencias_morfometria_posicion_trampas"
+    )
+    os.system(command)
