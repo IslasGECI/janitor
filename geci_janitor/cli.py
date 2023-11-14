@@ -65,7 +65,5 @@ def update_images():
 
 
 def update_diferencias():
-    command = (
-        "docker rmi --force islasgeci/diferencias_morfometria_posicion_trampas && docker pull islasgeci/diferencias_morfometria_posicion_trampas"
-    )
+    command = "docker rmi --force islasgeci/diferencias_morfometria_posicion_trampas && docker pull islasgeci/diferencias_morfometria_posicion_trampas"
     os.system(command)
