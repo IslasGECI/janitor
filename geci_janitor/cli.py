@@ -15,6 +15,27 @@ def transform_xlsx(options: str):
     os.system(command)
 
 
+@janitor.command()
+def cameras_camino(file: str):
+    """
+    Transform data `IG_CAMARA_TRAMPA_CAMINO_{date}.xls[x]` \n
+    """
+    print("🚧 Work in progress 🚧")
+
+
+@janitor.command()
+def cameras_extra(file: str):
+    """
+    Transform data `IG_CAMARA_TRAMPA_EXTRA_{date}.xls[x]` \n
+    """
+    salida_campo = "camaras_extra_revision_campo.csv"
+    salida_memoria = "camaras_extra_revision_memoria.csv"
+    command = f"docker run --entrypoint clean_k9_data --volume $PWD:/workdir islasgeci/clean_k9_data 'extra --file {file} --salida-campo {salida_campo} --salida-memoria {salida_memoria}'"
+    command = f"docker run --volume $PWD:/workdir islasgeci/clean_camera_data 'Rscript -e cameraData::add_data_check_column_extra_campo({file}, {salida_campo})'"
+    command = f"docker run --volume $PWD:/workdir islasgeci/clean_camera_data 'Rscript -e cameraData::add_data_check_column_extra_memoria({file}, {salida_memoria})'"
+    print("🚧 Work in progress 🚧")
+
+
 @janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
 def transform_cat_data():
     command = "docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/verify_data.sh /data"
