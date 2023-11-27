@@ -16,24 +16,19 @@ def transform_xlsx(options: str):
 
 
 @janitor.command()
-def cameras_camino(file: str):
+def clean_cameras(file: str):
     """
-    Transform data `IG_CAMARA_TRAMPA_CAMINO_{date}.xls[x]` \n
-    """
-    print("🚧 Work in progress 🚧")
-
-
-@janitor.command()
-def cameras_extra(file: str):
-    """
-    Transform data `IG_CAMARA_TRAMPA_EXTRA_{date}.xls[x]` \n
+    Clean data `IG_CAMARA_TRAMPA_EXTRA_{date}.xls[x]` \n
+    and `IG_CAMARA_TRAMPA_CAMINO_{date}.xls[x]` \n
     """
     salida_campo = "camaras_extra_revision_campo.csv"
     salida_memoria = "camaras_extra_revision_memoria.csv"
-    command = f"docker run --entrypoint clean_k9_data --volume $PWD:/workdir islasgeci/clean_k9_data 'extra --file {file} --salida-campo {salida_campo} --salida-memoria {salida_memoria}'"
-    command = f"docker run --volume $PWD:/workdir islasgeci/clean_camera_data 'Rscript -e cameraData::add_data_check_column_extra_campo({file}, {salida_campo})'"
-    command = f"docker run --volume $PWD:/workdir islasgeci/clean_camera_data 'Rscript -e cameraData::add_data_check_column_extra_memoria({file}, {salida_memoria})'"
-    print("🚧 Work in progress 🚧")
+    command = f"docker run --entrypoint clean_k9_data --volume $PWD:/workdir islasgeci/clean_k9_data extra {file} --salida-campo={salida_campo} --salida-memoria={salida_memoria}"
+    os.system(command)
+    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::add_data_check_column_to_campo("{file}", "{salida_campo}", "with_date_{salida_campo}")\''
+    os.system(command)
+    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::add_data_check_column_to_memoria("{file}", "{salida_memoria}", "with_date_{salida_memoria}")\''
+    os.system(command)
 
 
 @janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
@@ -83,8 +78,22 @@ def update_images():
     - `transform_cat_data`
     """
     update_diferencias()
+    update_clean_k9()
+    update_clean_cameras()
 
 
 def update_diferencias():
     command = "docker rmi --force islasgeci/diferencias_morfometria_posicion_trampas && docker pull islasgeci/diferencias_morfometria_posicion_trampas"
+    os.system(command)
+
+
+def update_clean_k9():
+    command = "docker rmi --force islasgeci/clean_k9_data && docker pull islasgeci/clean_k9_data"
+    os.system(command)
+
+
+def update_clean_cameras():
+    command = (
+        "docker rmi --force islasgeci/clean_camera_data && docker pull islasgeci/clean_camera_data"
+    )
     os.system(command)
