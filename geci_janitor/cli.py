@@ -31,6 +31,15 @@ def clean_cameras(file: str):
     os.system(command)
 
 
+@janitor.command()
+def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
+    """
+    Get cameras info. Run after `clean-cameras` command.
+    """
+    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::write_camera_info("{file}", "cameras_info.csv")\''
+    os.system(command)
+
+
 @janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
 def transform_cat_data():
     command = "docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/verify_data.sh /data"
