@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.8.0] - 2024-01-29
+
+### Added
+
+- New command `cameras-info`
+
 ## [0.7.0] - 2023-11-27
 
 ### Added
@@ -72,6 +78,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update token codecov
 
 
+[0.8.0]: https://github.com/IslasGECI/janitor/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/IslasGECI/janitor/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/IslasGECI/janitor/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/IslasGECI/janitor/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/IslasGECI/janitor/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/IslasGECI/janitor/compare/v0.3.0...v0.3.1
