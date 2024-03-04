@@ -38,6 +38,8 @@ def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
     """
     command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::write_camera_info("{file}", "cameras_info.csv")\''
     os.system(command)
+    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::write_cameras_last_check("{file}", "cameras_last_check.csv")\''
+    os.system(command)
 
 
 @janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
