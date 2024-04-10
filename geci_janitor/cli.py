@@ -30,6 +30,13 @@ def clean_cameras(file: str):
     command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::add_data_check_column_to_memoria("{file}", "{salida_memoria}", "with_date_{salida_memoria}")\''
     os.system(command)
 
+@janitor.command()
+def check_cameras_ids(mapsource_path:str = typer.Option(), revision_campo_path: str = "with_date_camaras_extra_revision_campo.csv"):
+    """
+    Check if all cameras are listed in Mapsource and revision_campo.
+    """
+    command = f'docker run --volume $PWD:/workdir islasgeci/read_mapsource Rscript -e \'readMS::check_cameras("{revision_campo_path}", "{mapsource_path}")\''
+    os.system(command)
 
 @janitor.command()
 def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
