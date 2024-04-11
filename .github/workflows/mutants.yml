@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Copia repositorio
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
     - name: Construye imagen
       run: docker build --tag islasgeci/janitor:latest .
     - name: Evalúa resistencia a mutaciones
