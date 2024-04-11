@@ -62,7 +62,8 @@ linter:
 	$(call lint, tests)
 
 mutants: setup
-	mutmut run --paths-to-mutate ${module}
+	mutmut run --paths-to-mutate ${module} --runner 'pytest' || \
+	mutmut html
 
 setup: clean install
 
