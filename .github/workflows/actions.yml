@@ -26,15 +26,10 @@ jobs:
         tag: "latest"
         message: "Latest release"
         force_push_tag: true
-  build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@main
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+    - name: Set up Python 3.X
+      uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: "3.x"
     - name: Install pypa/build
       run: >-
         python -m
@@ -53,4 +48,4 @@ jobs:
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.PYPI_TOKEN }}
-        skip_existing: true
+        skip-existing: true
