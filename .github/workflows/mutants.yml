@@ -1,0 +1,18 @@
+name: Push latest
+on: push
+jobs:
+  mutants:
+    name: 👾 Run mutation testing 👾
+    runs-on: ubuntu-latest
+    steps:
+    - name: Copia repositorio
+      uses: actions/checkout@v3
+    - name: Construye imagen
+      run: docker build --tag islasgeci/janitor:latest .
+    - name: Evalúa resistencia a mutaciones
+      run: docker run --volume $PWD:/workdir islasgeci/janitor:latest make mutants
+    - name: Upload
+      uses: actions/upload-artifact@main
+      with:
+        name: mutant registry
+        path: html
