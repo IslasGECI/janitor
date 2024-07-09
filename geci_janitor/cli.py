@@ -3,7 +3,8 @@ import typer
 from typing_extensions import Annotated
 import geci_janitor as jn
 
-janitor = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
+janitor = typer.Typer(
+    help="Tools to clean k9 data for the eradication Guadalupe Island project")
 
 
 @janitor.command()
@@ -79,7 +80,7 @@ def clean_socorro_week_data(week: int, data_file: str):
 
 @janitor.command()
 def socorro_morphometry(socorro_morphometry_path: Annotated[str, typer.Option()]):
-    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/socorro_morphometry_happy_path.sh {socorro_morphometry_path}"
+    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/socorro_morphometry_happy_path.sh /data/{socorro_morphometry_path}"
     os.system(command)
 
 
@@ -106,6 +107,7 @@ def update_images():
     Update images for command: \n
     - `transform_cat_data`
     """
+    os.system("pip install --upgrade geci-janitor")
     update_diferencias()
     update_clean_k9()
     update_clean_cameras()
