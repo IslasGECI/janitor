@@ -78,6 +78,12 @@ def clean_socorro_week_data(week: int, data_file: str):
 
 
 @janitor.command()
+def socorro_morphometry(socorro_morphometry_path: Annotated[str, typer.Option()]):
+    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/socorro_morphometry_happy_path.sh {socorro_morphometry_path}"
+    os.system(command)
+
+
+@janitor.command()
 def validate(directory: Annotated[str, typer.Argument()] = "."):
     """
     Run tabular data package validation \n
