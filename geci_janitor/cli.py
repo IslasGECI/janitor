@@ -3,8 +3,7 @@ import typer
 from typing_extensions import Annotated
 import geci_janitor as jn
 
-janitor = typer.Typer(
-    help="Tools to clean k9 data for the eradication Guadalupe Island project")
+janitor = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
 
 
 @janitor.command()
