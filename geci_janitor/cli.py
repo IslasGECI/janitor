@@ -3,7 +3,8 @@ import typer
 from typing_extensions import Annotated
 import geci_janitor as jn
 
-janitor = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
+janitor = typer.Typer(
+    help="Tools to clean k9 data for the eradication Guadalupe Island project")
 
 
 @janitor.command()
@@ -57,6 +58,12 @@ def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
 @janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
 def transform_cat_data():
     command = "docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/verify_data.sh /data"
+    os.system(command)
+
+
+@janitor.command(help="Extract weekly position traps data for Socorro monthly excel")
+def extract_weeks_from_xlsx(excel_path):
+    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest bash -c 'source src/extract_socorro_position_sheets.sh && extract_socorro_position /data/{excel_path}'"
     os.system(command)
 
 
