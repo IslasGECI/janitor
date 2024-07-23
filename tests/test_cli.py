@@ -40,3 +40,12 @@ def test_app():
         ["--help"],
     )
     assert "XX" not in result.stdout
+
+
+def test_version():
+    result = runner.invoke(
+        janitor,
+        ["version"],
+    )
+    expected_version = "0.11.0"
+    assert expected_version in result.stdout
