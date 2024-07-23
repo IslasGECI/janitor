@@ -101,6 +101,15 @@ def validate(directory: Annotated[str, typer.Argument()] = "."):
 
 
 @janitor.command()
+def change_date_format_to_iso(file_path: Annotated[str, typer.Argument()]):
+    """
+    'cambia_formato_fecha' wrapper \n
+    """
+    command = f"docker run --rm --volume $PWD:/workdir islasgeci/base cambia_formato_fecha {file_path} > ISO_{file_path}"
+    os.system(command)
+
+
+@janitor.command()
 def version():
     version = jn.__version__
     print(version)
