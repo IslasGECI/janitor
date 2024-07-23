@@ -25,6 +25,12 @@ def test_app():
 
     result = runner.invoke(
         janitor,
+        ["change-date-format-to-iso", "--help"],
+    )
+    assert result.exit_code == 0
+
+    result = runner.invoke(
+        janitor,
         ["--help"],
     )
     assert "XX" not in result.stdout
