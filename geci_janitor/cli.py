@@ -90,13 +90,27 @@ def socorro_morphometry(socorro_morphometry_path: Annotated[str, typer.Option()]
 
 
 @janitor.command()
+def write_active_traps_summary(
+    daily_status_path: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
+    initial_date: Annotated[str, typer.Option()],
+):
+    """
+    Count traps from daily status file.
+    --initial_date: Date to start the count "28/Feb/2099"
+    """
+    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest script -e 'diferenciasMorfometriaPosicionTrampas::write_type_of_traps(geci.optparse::get_options())' --data_path {daily_status_path} --initial_date {initial_date} --output_path {output_path}"
+    os.system(command)
+
+
+@janitor.command()
 def clean_socorro_position(socorro_position_path: Annotated[str, typer.Argument()]):
     """
     Clean weekly position traps from Socorro. \n
     Before run rename file with last sunday date: 'IS_POSICION_TRAMPA_09JUN2024.csv'. \n
     Run after `extract_weeks_from_xlsx` command. Next command is `weekly_effort_summary`
     """
-    command = f"docker run --rm --volume $PWD:/datos islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/happy_position_traps_socorro.sh /datos/{socorro_position_path}"
+    command = f"docker run --rm --volume $PWD:/workdir islasgeci/diferencias_morfometria_posicion_trampas:latest bash -c ''"
     os.system(command)
 
 
