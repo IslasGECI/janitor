@@ -89,13 +89,14 @@ def socorro_morphometry(socorro_morphometry_path: Annotated[str, typer.Option()]
     os.system(command)
 
 
-@janitor.command()
+@janitor.command(deprecated=True)
 def write_active_traps_summary(
     daily_status_path: Annotated[str, typer.Option()],
     output_path: Annotated[str, typer.Option()],
     initial_date: Annotated[str, typer.Option()],
 ):
     """
+    This command is deprecated. \n
     Count traps from daily status file.
     --initial_date: Date to start the count "28/Feb/2099"
     """
