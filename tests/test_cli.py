@@ -10,6 +10,7 @@ def test_app():
         ["write-active-traps-summary", "--help"],
     )
     assert result.exit_code == 0
+    assert "(deprecated)" in result.stdout
 
     result = runner.invoke(
         janitor,
