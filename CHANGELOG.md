@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [Unreleased]
+### Removed
+- `write_active_traps_summary` command.
+
+## [0.13.0] - 2025-02-17
+### Added
+- Add deprectaion warning for `write_active_traps_summary` command.
+
 ## [0.12.0] - 2025-02-12
 
 ### Added
