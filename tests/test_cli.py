@@ -18,6 +18,7 @@ def test_app():
     )
     assert result.exit_code == 0
     assert "--positions-path" in result.stdout
+    assert "--morphometry-path" in result.stdout
 
     result = runner.invoke(
         janitor,
