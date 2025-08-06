@@ -62,6 +62,17 @@ def transform_cat_data(
     os.system(command)
 
 
+@janitor.command(help="Clean and check IS_POSICION_TRAMPAS and IS_MORFOMETRIA")
+def transform_cat_data_socorro(
+    positions_path: str = typer.Option(), morphometry_path: str = typer.Option()
+):
+    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/demo_workflow /data/{positions_path} /data/{morphometry_path}"
+    os.system(command)
+
+    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/socorro_morphometry_happy_path.sh /data/{morphometry_path}"
+    os.system(command)
+
+
 @janitor.command(help="Extract weekly position traps data for Socorro monthly excel")
 def extract_weeks_from_xlsx(excel_path):
     command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest bash -c 'source src/extract_socorro_position_sheets.sh && extract_socorro_position /data/{excel_path}'"
