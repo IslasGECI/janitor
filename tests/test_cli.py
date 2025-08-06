@@ -7,6 +7,20 @@ runner = CliRunner()
 def test_app():
     result = runner.invoke(
         janitor,
+        ["transform-cat-data-socorro", "--help"],
+    )
+    assert result.exit_code == 0
+    assert "--positions-path" in result.stdout
+    assert "--morphometry-path" in result.stdout
+
+    result = runner.invoke(
+        janitor,
+        ["clean-socorro-position", "--help"],
+    )
+    assert result.exit_code == 0
+
+    result = runner.invoke(
+        janitor,
         ["transform-cat-data", "--help"],
     )
     assert result.exit_code == 0
