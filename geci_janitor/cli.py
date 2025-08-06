@@ -55,7 +55,9 @@ def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
 
 
 @janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
-def transform_cat_data(positions_path: str = typer.Option()):
+def transform_cat_data(
+    positions_path: str = typer.Option(), morphometry_path: str = typer.Option()
+):
     command = "docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/demo_workflow /data"
     os.system(command)
 
