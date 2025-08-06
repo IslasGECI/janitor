@@ -17,6 +17,7 @@ def test_app():
         ["transform-cat-data", "--help"],
     )
     assert result.exit_code == 0
+    assert "--positions-path" in result.stdout
 
     result = runner.invoke(
         janitor,
