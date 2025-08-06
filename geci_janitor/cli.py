@@ -97,12 +97,6 @@ def clean_socorro_week_data(week: int, data_file: str):
 
 
 @janitor.command()
-def socorro_morphometry(socorro_morphometry_path: Annotated[str, typer.Option()]):
-    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/socorro_morphometry_happy_path.sh /data/{socorro_morphometry_path}"
-    os.system(command)
-
-
-@janitor.command()
 def clean_socorro_position(socorro_position_path: Annotated[str, typer.Argument()]):
     """
     Clean weekly position traps from Socorro. \n

@@ -35,12 +35,6 @@ def test_app():
 
     result = runner.invoke(
         janitor,
-        ["socorro-morphometry", "--help"],
-    )
-    assert result.exit_code == 0
-
-    result = runner.invoke(
-        janitor,
         ["extract-weeks-from-xlsx", "--help"],
     )
     assert result.exit_code == 0
