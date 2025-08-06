@@ -15,9 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [Unreleased]
+## [0.14.0] - 2025-08-06
+### Added
+- Command `transform-cat-data-socorro`
+### Changed
+- The command `transform-cat-data` now receives the position and morphometry file paths as argument.
+- The command `transform-cat-data` and `transform-cat-data-socorro` now receives arguments.
 ### Removed
 - `write_active_traps_summary` command.
+- `socorro-morphometry` command.
 
 ## [0.13.0] - 2025-02-17
 ### Added
