@@ -58,7 +58,7 @@ def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
 def transform_cat_data(
     positions_path: str = typer.Option(), morphometry_path: str = typer.Option()
 ):
-    command = "docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/demo_workflow /data"
+    command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/demo_workflow /data/{positions_path} /data/{morphometry_path}"
     os.system(command)
 
 
@@ -88,21 +88,6 @@ def clean_socorro_week_data(week: int, data_file: str):
 @janitor.command()
 def socorro_morphometry(socorro_morphometry_path: Annotated[str, typer.Option()]):
     command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/socorro_morphometry_happy_path.sh /data/{socorro_morphometry_path}"
-    os.system(command)
-
-
-@janitor.command(deprecated=True)
-def write_active_traps_summary(
-    daily_status_path: Annotated[str, typer.Option()],
-    output_path: Annotated[str, typer.Option()],
-    initial_date: Annotated[str, typer.Option()],
-):
-    """
-    This command is deprecated. \n
-    Count traps from daily status file.
-    --initial_date: Date to start the count "28/Feb/2099"
-    """
-    command = f"docker run --rm --volume $PWD:/workdir islasgeci/diferencias_morfometria_posicion_trampas:latest Rscript -e 'diferenciasMorfometriaPosicionTrampas::write_type_of_traps(geci.optparse::get_options())' --data_path {daily_status_path} --initial_date {initial_date} --output_path {output_path}"
     os.system(command)
 
 
