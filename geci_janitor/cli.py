@@ -56,7 +56,8 @@ def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
 
 @janitor.command(help="Clean and check IG_POSICION_TRAMPAS and IG_MORFOMETRIA")
 def transform_cat_data(
-    positions_path: str = typer.Option(), morphometry_path: str = typer.Option()
+    positions_path: Annotated[str, typer.Argument()],
+    morphometry_path: Annotated[str, typer.Argument()],
 ):
     command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/demo_workflow /data/{positions_path} /data/{morphometry_path}"
     os.system(command)
@@ -64,7 +65,8 @@ def transform_cat_data(
 
 @janitor.command(help="Clean and check IS_POSICION_TRAMPAS and IS_MORFOMETRIA")
 def transform_cat_data_socorro(
-    positions_path: str = typer.Option(), morphometry_path: str = typer.Option()
+    positions_path: Annotated[str, typer.Argument()],
+    morphometry_path: Annotated[str, typer.Argument()],
 ):
     command = f"docker run --rm --volume $PWD:/data islasgeci/diferencias_morfometria_posicion_trampas:latest ./src/demo_workflow /data/{positions_path} /data/{morphometry_path}"
     os.system(command)

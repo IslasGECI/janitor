@@ -10,8 +10,8 @@ def test_app():
         ["transform-cat-data-socorro", "--help"],
     )
     assert result.exit_code == 0
-    assert "--positions-path" in result.stdout
-    assert "--morphometry-path" in result.stdout
+    assert "positions_path" in result.stdout
+    assert "morphometry_path" in result.stdout
 
     result = runner.invoke(
         janitor,
@@ -24,8 +24,8 @@ def test_app():
         ["transform-cat-data", "--help"],
     )
     assert result.exit_code == 0
-    assert "--positions-path" in result.stdout
-    assert "--morphometry-path" in result.stdout
+    assert "positions_path" in result.stdout
+    assert "morphometry_path" in result.stdout
 
     result = runner.invoke(
         janitor,
