@@ -47,6 +47,12 @@ def test_app():
 
     result = runner.invoke(
         janitor,
+        ["check-traps-ids", "--help"],
+    )
+    assert result.exit_code == 0
+
+    result = runner.invoke(
+        janitor,
         ["--help"],
     )
     assert "XX" not in result.stdout
