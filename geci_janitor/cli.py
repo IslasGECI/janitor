@@ -32,15 +32,6 @@ def clean_cameras(file: str):
 
 
 @janitor.command()
-def check_traps_ids(positions_path: str = typer.Option(), mapsource_path: str = typer.Option()):
-    """
-    Check if all traps in Mapsource are listed in postions and vice versa.
-    """
-    command = f'docker run --volume $PWD:/workdir islasgeci/read_mapsource Rscript -e \'readMS::check_traps("{positions_path}", "{mapsource_path}")\''
-    os.system(command)
-
-
-@janitor.command()
 def check_cameras_ids(
     mapsource_path: str = typer.Option(),
     revision_campo_path: str = "with_date_camaras_extra_revision_campo.csv",
@@ -60,6 +51,15 @@ def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
     command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::write_camera_info("{file}", "cameras_info.csv")\''
     os.system(command)
     command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::write_cameras_last_check("{file}", "cameras_last_check.csv")\''
+    os.system(command)
+
+
+@janitor.command()
+def check_traps_ids(positions_path: str = typer.Option(), mapsource_path: str = typer.Option()):
+    """
+    Check if all traps in Mapsource are listed in postions and vice versa.
+    """
+    command = f'docker run --volume $PWD:/workdir islasgeci/read_mapsource Rscript -e \'readMS::check_traps("{positions_path}", "{mapsource_path}")\''
     os.system(command)
 
 
