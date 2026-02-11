@@ -2,6 +2,7 @@ import os
 import typer
 from typing import Annotated
 import geci_janitor as jn
+from warnings import deprecated
 
 janitor = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
 
@@ -72,7 +73,8 @@ def transform_cat_data(
     os.system(command)
 
 
-@janitor.command(help="Clean and check IS_POSICION_TRAMPAS and IS_MORFOMETRIA")
+@deprecated("Use transform-cat-data instead")
+@janitor.command(deprecated=True)
 def transform_cat_data_socorro(
     positions_path: Annotated[str, typer.Argument()],
     morphometry_path: Annotated[str, typer.Argument()],
