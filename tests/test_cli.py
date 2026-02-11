@@ -63,5 +63,5 @@ def test_version():
         janitor,
         ["version"],
     )
-    expected_version = "0.16.0"
+    expected_version = "0.16.1"
     assert expected_version in result.stdout
