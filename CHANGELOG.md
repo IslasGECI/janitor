@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.16.1] - 2026-02-11
+### Fixed
+- Fix `warnings.deprecated` dependency.
+
 ## [0.16.0] - 2026-02-11
 ### Fixed
 - Change `typing-extension` dependency to `typing`.
