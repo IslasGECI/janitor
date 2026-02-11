@@ -15,6 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.16.0] - 2026-02-11
+### Fixed
+- Change `typing-extension` dependency to `typing`.
+
+### Changed
+- Deprecation warning to CLI command `transform_cat_data_socorro`.
+
 ## [0.15.0] - 2025-12-09
 ### Added
 - Command `check-traps-ids` check the ids listed on Mapsource and positions file.
