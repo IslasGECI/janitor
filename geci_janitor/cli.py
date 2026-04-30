@@ -26,9 +26,9 @@ def clean_cameras(file: str):
     salida_memoria = "camaras_extra_revision_memoria.csv"
     command = f"docker run --entrypoint clean_k9_data --volume $PWD:/workdir islasgeci/clean_k9_data extra {file} --salida-campo={salida_campo} --salida-memoria={salida_memoria}"
     os.system(command)
-    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::add_data_check_column_to_campo("{file}", "{salida_campo}", "with_date_{salida_campo}")\''
+    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameradata::add_data_check_column_to_campo("{file}", "{salida_campo}", "with_date_{salida_campo}")\''
     os.system(command)
-    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::add_data_check_column_to_memoria("{file}", "{salida_memoria}", "with_date_{salida_memoria}")\''
+    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameradata::add_data_check_column_to_memoria("{file}", "{salida_memoria}", "with_date_{salida_memoria}")\''
     os.system(command)
 
 
@@ -49,9 +49,9 @@ def cameras_info(file: str = "camaras_extra_revision_campo.csv"):
     """
     Get cameras info. Run after `clean-cameras` command.
     """
-    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::write_camera_info("{file}", "cameras_info.csv")\''
+    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameradata::write_camera_info("{file}", "cameras_info.csv")\''
     os.system(command)
-    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameraData::write_cameras_last_check("{file}", "cameras_last_check.csv")\''
+    command = f'docker run --volume $PWD:/workdir islasgeci/clean_camera_data R -e \'cameradata::write_cameras_last_check("{file}", "cameras_last_check.csv")\''
     os.system(command)
 
 
